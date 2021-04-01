@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
+
+      <div class="field">
+        <label>Length</label>
+        <!-- This is to watch for what the user types in -->
+        <!-- We're now watching for an (event) which is an (input) event -->
+        <!-- Originally $event.target.value but kept throwing a "could possibly be null" exception-->
+        <input class="input" (input)="onChangeLength($any($event.target).value)" />
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <!-- This is the event-binding syntax -->
+            <input (change)="onChangeUseLetters()" type="checkbox" />
+            Use Letters
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <!-- This is the event-binding syntax -->
+            <input (change)="onChangeUseNumbers()" type="checkbox" />
+            Use Numbers
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <!-- This is the event-binding syntax -->
+            <input (change)="onChangeUseSymbols()" type="checkbox" />
+            Use Symbols
+          </label>
+        </div>
+      </div>
+
+      <!-- This is the event-binding syntax -->
+      <!-- "!length" explanation: -->
+      <!-- 0 = false, so any number than 0 evaluates to true.
+      "!length" evaluates to true if the length is 0 which
+      then enables the disable functionality -->
+      <button [disabled]="
+          !(length && (includeLetters || includeSymbols || includeNumbers))
+        " (click)="onButtonClick()" class="button is-link is-fullwidth">
+        Generate!
+      </button>
+
+      <div class="box" *ngIf="password">
+        <label>Your Password</label>
+        <!-- This is the property-binding systax -->
+        <input class="input" [value]="password" />
+      </div>
+    </div>
+  </div>
+</div>
