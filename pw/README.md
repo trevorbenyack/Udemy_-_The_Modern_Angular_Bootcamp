@@ -1,6 +1,6 @@
 # Pw
 
-This project is a build-along tutorial from the Udemy course: "The Modern Angular Bootcamp [2020]".
+This project is a build-along tutorial from the Udemy course: "The Modern Angular Bootcamp [2020]". To view the deployed version [please click here](https://pw-project-zeta.vercel.app)
 
 ## Development server
 
