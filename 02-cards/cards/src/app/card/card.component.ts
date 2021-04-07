@@ -9,6 +9,7 @@ export class CardComponent implements OnInit {
 
   // This instructs are card component that it is going to receive these four different properties when we try to create it from some other component's template
   // assignment gives the default values for these properties
+  // These decorators tell angular that this property is going to be provided by the parent component
   @Input() title = '';
   @Input() imageUrl = '';
   @Input() content = '';
