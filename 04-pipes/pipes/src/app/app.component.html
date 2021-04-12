@@ -43,4 +43,41 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="form-group col">
+      <label>Height</label>
+      <input  class="form-control" (input)="onHeightChange($event.target.value)" />
+    </div>
+
+    <div class="col">
+      <label><b>Height</b></label>
+      <div>
+        <!-- this uses pipes! -->
+        <!-- .0-0 means print out at least places to the right 
+        and at most zero to the most -->
+        <!-- .2-2 would get a two place decimal number -->
+        {{ height| number: '1.0-0' }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label>Miles</label>
+      <input class="form-control" (input)="onMilesChagne($event.target.value)" />
+    </div>
+
+    <div class="col">
+      <label><b>Kilometers</b></label>
+      <!-- pipes can be used almost anywhere in a template! -->
+      <div *ngIf="(miles | convert: 'm') > 10">
+        <!-- this uses a custom pipe! (convert.pipe.ts file sets it up)-->
+        <!-- can combine pipes like doing something like string.toUpperCase().toLowerCase()-->
+        {{ miles | convert: 'm' | number: '1.0-2' }}
+      </div>
+    </div>
+  </div>
 </div>
+
+This is usually just used for debugging:
+JSON pipe output:
+{{ car | json }}
